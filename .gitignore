@@ -1,0 +1,29 @@
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+*~
+
+# Configuration files
+config.yml
+
+### JetBrains template
+*.iml
+
+## Directory-based project format:
+.idea/
+
+# Parameters
+/app/config/parameters.yml
+
+# Managed by Composer
+/vendor/
+
+# PHPUnit
+/app/phpunit.xml
+/phpunit.xml

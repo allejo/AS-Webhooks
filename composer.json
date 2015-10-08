@@ -1,0 +1,10 @@
+{
+  "require": {
+    "allejo/php-pulse": "dev-master",
+    "deralex/yaml-config-service-provider": "^1.0",
+    "twig/twig": "~1.0",
+    "silex/silex": "~1.3",
+    "symfony/twig-bridge": "^2.7",
+    "symfony/yaml": "^2.7"
+  }
+}

@@ -1,0 +1,45 @@
+<p>
+    <strong>Entry ID:</strong> {{ EntryId }}
+    <br>
+    <strong>Date Created:</strong> {{ DateCreated }}
+    <br>
+    <strong>Submitted by:</strong> {{ Field1 }} {{ Field2 }}
+    <br>
+    <strong>Submitter Email:</strong> {{ Field3 }}
+    <br>
+    <strong>Web page:</strong> {{ Field4 }}
+    <br>
+    <strong>Priority:</strong> {{ Field113 }}
+</p>
+
+<hr>
+
+<p>
+    <strong>Change Required:</strong>
+    <br>
+    {{ Field5 | nl2br }}
+</p>
+
+{% if Field10 is not empty %}
+    <hr>
+
+    <p>
+        <strong>Instruction:</strong>
+        <br>
+        {{ Field10 | nl2br }}
+    </p>
+{% endif %}
+
+{% if Field7 is not empty or Field8 is not empty %}
+    <p><strong>File Attachments:</strong></p>
+
+    <ul>
+        {% if Field8 is not empty %}
+            <li><a href="{{ Field8-url }}">{{ Field8 }}</a></li>
+        {% endif %}
+
+        {% if Field7 is not empty %}
+            <li><a href="{{ Field7-url }}">{{ Field7 }}</a></li>
+        {% endif %}
+    </ul>
+{% endif %}

@@ -4,17 +4,19 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use allejo\DaPulse\PulseProject;
 
-$apiKey = $app['config']['dapulse_key'];
-
-PulseProject::setApiKey($apiKey);
-
+// The app kernel
 $app = new Silex\Application();
 
+// Register kernel extensions
 $app->register(new DerAlex\Silex\YamlConfigServiceProvider(__DIR__ . '/config.yml'));
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/views',
 ));
 
+// Setup our DaPulse library
+PulseProject::setApiKey($app['config']['dapulse_key']);
+
+// Webhooks
 $app->post('/hooks/webrequest', function() use($app) {
     $fields = array("EntryId", "DateCreated", "Field1", "Field2", "Field3", "Field4", "Field113", "Field5", "Field10",
                     "Field7", "Field7-url", "Field8", "Field8-url");
@@ -31,4 +33,4 @@ $app->post('/hooks/webrequest', function() use($app) {
     $webProject->addNote("Web Request Details", $content);
 }); 
 
-$app->run(); 
+$app->run();

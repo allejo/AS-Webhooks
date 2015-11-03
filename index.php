@@ -35,6 +35,10 @@ $app->post('/hooks/webrequest', function() use($app) {
     $newPulse->getColumnValue("text")->updateValue($twigVars["Field113"]);
     $newPulse->getColumnValue("person")->updateValue(217784);
     $newPulse->addNote("Web Request Details", $content);
+
+    return $app->json(array(
+        "pulse_id" => $newPulse->getId()
+    ));
 }); 
 
 $app->run();

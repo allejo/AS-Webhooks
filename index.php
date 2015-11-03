@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use allejo\DaPulse\PulseProject;
+use allejo\DaPulse\PulseBoard;
 
 // The app kernel
 $app = new Silex\Application();
@@ -14,7 +14,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 // Setup our DaPulse library
-PulseProject::setApiKey($app['config']['dapulse_key']);
+PulseBoard::setApiKey($app['config']['dapulse_key']);
 
 // Webhooks
 $app->post('/hooks/webrequest', function() use($app) {
@@ -29,8 +29,12 @@ $app->post('/hooks/webrequest', function() use($app) {
 
 	$content = $app['twig']->render('webrequest.html.twig', $twigVars);
 
-    $webProject = new PulseProject(3457985);
-    $webProject->addNote("Web Request Details", $content);
+    $webProjectsBoard = new PulseBoard(2404828);
+
+    $newPulse = $webProjectsBoard->createPulse("Web Request #" . $twigVars["EntryId"], 212350, "web_requests");
+    $newPulse->getColumnValue("text")->updateValue($twigVars["Field113"]);
+    $newPulse->getColumnValue("person")->updateValue(217784);
+    $newPulse->addNote("Web Request Details", $content);
 }); 
 
 $app->run();

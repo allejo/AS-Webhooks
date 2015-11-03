@@ -17,7 +17,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 PulseBoard::setApiKey($app['config']['dapulse_key']);
 
 // Webhooks
-$app->post('/hooks/webrequest', function() use($app) {
+$app->post('/webrequest', function() use($app) {
     $fields = array("EntryId", "DateCreated", "Field1", "Field2", "Field3", "Field4", "Field113", "Field5", "Field10",
                     "Field7", "Field7-url", "Field8", "Field8-url");
     $twigVars = array();

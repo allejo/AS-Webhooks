@@ -1,0 +1,174 @@
+{% import _self as ul %}
+
+{% macro conditionalListItem(field) %}
+    {% if field is not empty %}
+        <li>{{ field }}</li>
+    {% endif %}
+{% endmacro %}
+
+{% macro filedownload(field, url) %}
+    {% if field is not empty %}
+        <li><a href="{{ url }}">{{ field }}</a></li>
+    {% endif %}
+{% endmacro %}
+
+<p>
+    <strong>Contact</strong>
+    <br>
+    {{ Field1 }} {{ Field2 }} ({{ Field5 }})
+    <br>
+    <a href="mailto:{{ Field3 }}">{{ Field3 }}</a>
+
+    {% if Field4 is not empty %}
+        <br>
+        <a href="tel:{{ Field4 }}">{{ Field4 }}</a>
+    {% endif %}
+</p>
+
+<p>
+    <strong>Adviser</strong>
+    <br>
+    {{ Field148 }} {{ Field149 }}
+    <br>
+    <a href="mailto:{{ Field150 }}">{{ Field150 }}</a>
+</p>
+
+{% if Field465 is not empty %}
+    <hr>
+
+    <p>
+        <strong>Event Details</strong>
+        <br>
+        Name: {{ Field7 }}
+        <br>
+        Date: {{ Field116 }} @ {{ Field117 }}
+        <br>
+        Location: {{ Field119 }}
+        <br>
+        Cost: {{ Field138 }}
+        <br>
+        Ticket Sale Location: {{ Field139 }}
+        <br>
+        Budget: {{ Field132 }}
+        <br>
+        Has this event been done before? {{ Field10 }}
+    </p>
+
+    <p>
+        <strong>Target Audience</strong>
+    </p>
+
+    <ul>
+        {{ ul.conditionalListItem(Field12) }}
+        {{ ul.conditionalListItem(Field13) }}
+        {{ ul.conditionalListItem(Field14) }}
+    </ul>
+
+    <p>
+        <strong>Event Description</strong>
+        <br>
+        {{ Field143 | nl2br }}
+    </p>
+
+    <p>
+        <strong>Event Selling Points</strong>
+        <br>
+        {{ Field129 | nl2br }}
+    </p>
+
+    <p>
+        <strong>Required Marketing</strong>
+    </p>
+    <ul>
+        {{ ul.conditionalListItem(Field154) }}
+        {{ ul.conditionalListItem(Field155) }}
+        {{ ul.conditionalListItem(Field159) }}
+        {{ ul.conditionalListItem(Field156) }}
+        {{ ul.conditionalListItem(Field157) }}
+        {{ ul.conditionalListItem(Field158) }}
+        {{ ul.conditionalListItem(Field160) }}
+    </ul>
+
+    {% if Field135 is not empty %}
+        <p>
+            <strong>Additional Marketing Needs</strong>
+            <br>
+            {{ Field135 | nl2br }}
+        </p>
+    {% endif %}
+
+    {% if Field462 is not empty or Field463 is not empty %}
+        <p>
+            <strong>Attachments</strong>
+        </p>
+
+        <ul>
+            {{ ul.filedownload(Field462, Field462-url) }}
+            {{ ul.filedownload(Field463, Field463-url) }}
+        </ul>
+    {% endif %}
+{% endif %}
+
+{% if Field466 is not empty %}
+    <hr>
+
+    <p>
+        <strong>Name</strong>
+        <br>
+        {{ Field1378 }}
+    </p>
+
+    <p>
+        <strong>Description</strong>
+        <br>
+        {{ Field256 | nl2br }}
+    </p>
+
+    {% if Field1275 is not empty or Field136 is not empty %}
+        <p>
+            <strong>Attachments</strong>
+        </p>
+
+        <ul>
+            {{ ul.filedownload(Field1275, Field1275-url) }}
+            {{ ul.filedownload(Field136, Field136-url) }}
+        </ul>
+    {% endif %}
+{% endif %}
+
+{% if Field467 is not empty %}
+    <hr>
+
+    <p>
+        <strong>Name</strong>
+        <br>
+        {{ Field1379 }}
+    </p>
+
+    <p>
+        <strong>Description</strong>
+        <br>
+        {{ Field1274 | nl2br }}
+    </p>
+
+    {% if Field137 is not empty or Field1276 is not empty %}
+        <p>
+            <strong>Attachments</strong>
+        </p>
+
+        <ul>
+            {{ ul.filedownload(Field137, Field137-url) }}
+            {{ ul.filedownload(Field1276, Field1276-url) }}
+        </ul>
+    {% endif %}
+{% endif %}
+
+{% if Field1168 is not empty %}
+    <hr>
+
+    <p>
+        <strong>Additional Notes</strong>
+    </p>
+
+    {{ Field1168 | nl2br }}
+{% endif %}

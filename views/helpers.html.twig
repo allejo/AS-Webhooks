@@ -1,0 +1,19 @@
+{% macro email(email) %}
+    <a href="mailto:{{ email }}">{{ email }}</a>
+{% endmacro %}
+
+{% macro telephone(tel) %}
+    <a href="tel:{{ tel }}">{{ tel }}</a>
+{% endmacro %}
+
+{% macro conditionalListItem(field) %}
+    {% if field is not empty %}
+        <li>{{ field }}</li>
+    {% endif %}
+{% endmacro %}
+
+{% macro filedownload(field, url) %}
+    {% if field is not empty %}
+        <li><a href="{{ url }}">{{ field }}</a></li>
+    {% endif %}
+{% endmacro %}

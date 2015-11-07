@@ -8,6 +8,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class WebController
 {
+    public function agendaRequestAction (Request $request, Application $app)
+    {
+
+    }
+
     public function webRequestAction(Request $request, Application $app)
     {
         $entryId  = $request->get("EntryId");

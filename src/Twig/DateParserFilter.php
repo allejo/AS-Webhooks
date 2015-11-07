@@ -11,9 +11,24 @@ class DateParserFilter extends \Twig_Extension
         );
     }
 
-    public function parseDate ($string, $format)
+    public function parseDate ($string, $formats)
     {
-        return \DateTime::createFromFormat($format, $string);
+        if (is_string($formats))
+        {
+            $formats = array($formats);
+        }
+
+        foreach ($formats as $format)
+        {
+            $dateTime = \DateTime::createFromFormat($format, $string);
+
+            if ($dateTime !== false)
+            {
+                return $dateTime;
+            }
+        }
+
+        return $string;
     }
 
     public function getName ()

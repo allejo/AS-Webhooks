@@ -1,3 +1,5 @@
+{% import "helpers.html.twig" as pulser %}
+
 <p>
     <strong>Entry ID:</strong> {{ EntryId }}
     <br>
@@ -5,9 +7,9 @@
     <br>
     <strong>Submitted by:</strong> {{ Field1 }} {{ Field2 }}
     <br>
-    <strong>Submitter Email:</strong> {{ Field3 }}
+    <strong>Submitter Email:</strong> {{ pulser.email(Field3) }}
     <br>
-    <strong>Web page:</strong> {{ Field4 }}
+    <strong>Web page:</strong> {{ pulser.link(Field4) }}
     <br>
     <strong>Priority:</strong> {{ Field113 }}
 </p>
@@ -34,12 +36,7 @@
     <p><strong>File Attachments:</strong></p>
 
     <ul>
-        {% if Field8 is not empty %}
-            <li><a href="{{ Field8-url }}">{{ Field8 }}</a></li>
-        {% endif %}
-
-        {% if Field7 is not empty %}
-            <li><a href="{{ Field7-url }}">{{ Field7 }}</a></li>
-        {% endif %}
+        {{ pulser.filedownload(Field8) }}
+        {{ pulser.filedownload(Field7) }}
     </ul>
 {% endif %}

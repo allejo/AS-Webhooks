@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8deaaaa3cf5033cd9135bee353b28554",
+    "hash": "dba586776bc870ca14910b2c807e9ac5",
     "content-hash": "54ad214d700868a8a3dc45726cfe0625",
     "packages": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/allejo/PhpPulse.git",
-                "reference": "0d3a8e4c4c1041d6849526083097640908d3a26c"
+                "reference": "88d60894742529bbbff95097beb1f0d52418e827"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/allejo/PhpPulse/zipball/0d3a8e4c4c1041d6849526083097640908d3a26c",
-                "reference": "0d3a8e4c4c1041d6849526083097640908d3a26c",
+                "url": "https://api.github.com/repos/allejo/PhpPulse/zipball/88d60894742529bbbff95097beb1f0d52418e827",
+                "reference": "88d60894742529bbbff95097beb1f0d52418e827",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 }
             ],
             "description": "A PHP library for working with the DaPulse API",
-            "time": "2015-11-04 03:03:04"
+            "time": "2015-11-07 06:08:11"
         },
         {
             "name": "deralex/yaml-config-service-provider",
@@ -710,16 +710,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.23.0",
+            "version": "v1.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "5868cd822fd6cf626d5f805439575f9c323cee2a"
+                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5868cd822fd6cf626d5f805439575f9c323cee2a",
-                "reference": "5868cd822fd6cf626d5f805439575f9c323cee2a",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
+                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-10-29 23:29:01"
+            "time": "2015-11-05 12:49:06"
         }
     ],
     "packages-dev": [],

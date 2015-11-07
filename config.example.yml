@@ -1,1 +1,11 @@
-dapulse_key: "API key"
+dapulse:
+  apikey: "API key"
+  boards:
+    board_one: 1
+    board_two: 2
+  users:
+    user_one: 1
+    user_two: 2
+wufoo:
+  subdomain: "subdomain"
+  apikey: "wufoo api key"

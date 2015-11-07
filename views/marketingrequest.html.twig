@@ -1,27 +1,15 @@
-{% import _self as ul %}
-
-{% macro conditionalListItem(field) %}
-    {% if field is not empty %}
-        <li>{{ field }}</li>
-    {% endif %}
-{% endmacro %}
-
-{% macro filedownload(field, url) %}
-    {% if field is not empty %}
-        <li><a href="{{ url }}">{{ field }}</a></li>
-    {% endif %}
-{% endmacro %}
+{% import "helpers.html.twig" as pulser %}
 
 <p>
     <strong>Contact</strong>
     <br>
     {{ Field1 }} {{ Field2 }} ({{ Field5 }})
     <br>
-    <a href="mailto:{{ Field3 }}">{{ Field3 }}</a>
+    {{ pulser.email(Field3) }}
 
     {% if Field4 is not empty %}
         <br>
-        <a href="tel:{{ Field4 }}">{{ Field4 }}</a>
+        {{ pulser.telephone(Field4) }}
     {% endif %}
 </p>
 
@@ -30,7 +18,7 @@
     <br>
     {{ Field148 }} {{ Field149 }}
     <br>
-    <a href="mailto:{{ Field150 }}">{{ Field150 }}</a>
+    {{ pulser.email(Field150) }}
 </p>
 
 {% if Field465 is not empty %}
@@ -41,7 +29,7 @@
         <br>
         Name: {{ Field7 }}
         <br>
-        Date: {{ Field116 | parse_date("Ymd") | date("M d, Y") }} @ {{ Field117 | date("g:ia") }}
+        Date: {{ Field116 | parse_date(["Ymd", "Y-m-d"]) | date("M d, Y") }} @ {{ Field117 | date("g:ia") }}
         <br>
         Location: {{ Field119 }}
         <br>
@@ -59,9 +47,9 @@
     </p>
 
     <ul>
-        {{ ul.conditionalListItem(Field12) }}
-        {{ ul.conditionalListItem(Field13) }}
-        {{ ul.conditionalListItem(Field14) }}
+        {{ pulser.conditionalListItem(Field12) }}
+        {{ pulser.conditionalListItem(Field13) }}
+        {{ pulser.conditionalListItem(Field14) }}
     </ul>
 
     <p>
@@ -80,13 +68,13 @@
         <strong>Required Marketing</strong>
     </p>
     <ul>
-        {{ ul.conditionalListItem(Field154) }}
-        {{ ul.conditionalListItem(Field155) }}
-        {{ ul.conditionalListItem(Field159) }}
-        {{ ul.conditionalListItem(Field156) }}
-        {{ ul.conditionalListItem(Field157) }}
-        {{ ul.conditionalListItem(Field158) }}
-        {{ ul.conditionalListItem(Field160) }}
+        {{ pulser.conditionalListItem(Field154) }}
+        {{ pulser.conditionalListItem(Field155) }}
+        {{ pulser.conditionalListItem(Field159) }}
+        {{ pulser.conditionalListItem(Field156) }}
+        {{ pulser.conditionalListItem(Field157) }}
+        {{ pulser.conditionalListItem(Field158) }}
+        {{ pulser.conditionalListItem(Field160) }}
     </ul>
 
     {% if Field135 is not empty %}
@@ -103,8 +91,8 @@
         </p>
 
         <ul>
-            {{ ul.filedownload(Field462, Field462-url) }}
-            {{ ul.filedownload(Field463, Field463-url) }}
+            {{ pulser.filedownload(Field462) }}
+            {{ pulser.filedownload(Field463) }}
         </ul>
     {% endif %}
 {% endif %}
@@ -130,8 +118,8 @@
         </p>
 
         <ul>
-            {{ ul.filedownload(Field1275, Field1275-url) }}
-            {{ ul.filedownload(Field136, Field136-url) }}
+            {{ pulser.filedownload(Field1275) }}
+            {{ pulser.filedownload(Field136) }}
         </ul>
     {% endif %}
 {% endif %}
@@ -157,8 +145,8 @@
         </p>
 
         <ul>
-            {{ ul.filedownload(Field137, Field137-url) }}
-            {{ ul.filedownload(Field1276, Field1276-url) }}
+            {{ pulser.filedownload(Field137) }}
+            {{ pulser.filedownload(Field1276) }}
         </ul>
     {% endif %}
 {% endif %}

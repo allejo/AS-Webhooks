@@ -1,0 +1,34 @@
+{% import "helpers.html.twig" as pulser %}
+{% import _self as self %}
+
+{% macro fileUpload(file, date) %}
+    {% if file is not empty %}
+        <li>
+            <span>{{ date | parse_date(["Ymd", "Y-m-d"]) | date("Y-m-d") }}</span>
+            <span>{{ file | wufoo_upload }}</span>
+        </li>
+    {% endif %}
+{% endmacro %}
+
+<p>
+    <strong>Submitted by:</strong> <span>{{ Field128 }} {{ Field129 }}</span>
+    <br>
+    <strong>Email:</strong> <span>{{ pulser.email(Field123) }}</span>
+    <br>
+    <strong>Committee:</strong> <span>{{ Field2 }}</span>
+</p>
+
+<ul>
+    {{ self.fileUpload(Field103, Field131) }}
+    {{ self.fileUpload(Field122, Field132) }}
+    {{ self.fileUpload(Field125, Field133) }}
+    {{ self.fileUpload(Field126, Field134) }}
+</ul>
+
+{% if Field108 is not empty %}
+    <p>
+        <strong>Additional Notes</strong>
+        <br>
+        {{ Field108 | nl2br }}
+    </p>
+{% endif %}

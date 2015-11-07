@@ -20,6 +20,6 @@ $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
 }));
 
 // Setup our DaPulse library
-PulseBoard::setApiKey($app['config']['dapulse_key']);
+PulseBoard::setApiKey($app['config']['dapulse']['apikey']);
 
 return $app;

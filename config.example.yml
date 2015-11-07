@@ -1,1 +1,5 @@
-dapulse_key: "API key"
+dapulse:
+  apikey: "API key"
+wufoo:
+  subdomain: "subdomain"
+  apikey: "wufoo api key"

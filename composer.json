@@ -9,7 +9,8 @@
   },
   "autoload": {
     "classmap": [
-      "controllers"
+      "controllers",
+      "src"
     ]
   }
 }

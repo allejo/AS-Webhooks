@@ -4,7 +4,7 @@
 {% macro fileUpload(file, date) %}
     {% if file is not empty %}
         <li>
-            <span>{{ date | parse_date("Ymd") | date("Y-m-d") }}</span>
+            <span>{{ date | parse_date(["Ymd", "Y-m-d"]) | date("Y-m-d") }}</span>
             <span>{{ file | wufoo_upload }}</span>
         </li>
     {% endif %}

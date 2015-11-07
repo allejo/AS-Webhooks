@@ -29,7 +29,7 @@
         <br>
         Name: {{ Field7 }}
         <br>
-        Date: {{ Field116 | parse_date("Ymd") | date("M d, Y") }} @ {{ Field117 | date("g:ia") }}
+        Date: {{ Field116 | parse_date(["Ymd", "Y-m-d"]) | date("M d, Y") }} @ {{ Field117 | date("g:ia") }}
         <br>
         Location: {{ Field119 }}
         <br>

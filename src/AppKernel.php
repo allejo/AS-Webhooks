@@ -14,6 +14,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Register Twig extensions
 $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
     $twig->addExtension(new allejo\DaPulser\Twig\DateParserFilter($app));
+    $twig->addExtension(new allejo\DaPulser\Twig\WufooUploadFilter($app));
 
     return $twig;
 }));

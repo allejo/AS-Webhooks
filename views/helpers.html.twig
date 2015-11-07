@@ -1,3 +1,7 @@
+{% macro link(link) %}
+    <a href="{{ link }}">{{ link }}</a>
+{% endmacro %}
+
 {% macro email(email) %}
     <a href="mailto:{{ email }}">{{ email }}</a>
 {% endmacro %}
@@ -12,8 +16,8 @@
     {% endif %}
 {% endmacro %}
 
-{% macro filedownload(field, url) %}
+{% macro filedownload(field) %}
     {% if field is not empty %}
-        <li><a href="{{ url }}">{{ field }}</a></li>
+        <li>{{ field | wufoo_upload }}</li>
     {% endif %}
 {% endmacro %}

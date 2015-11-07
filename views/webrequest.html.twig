@@ -7,9 +7,9 @@
     <br>
     <strong>Submitted by:</strong> {{ Field1 }} {{ Field2 }}
     <br>
-    <strong>Submitter Email:</strong> {{ Field3 }}
+    <strong>Submitter Email:</strong> {{ pulser.email(Field3) }}
     <br>
-    <strong>Web page:</strong> {{ Field4 }}
+    <strong>Web page:</strong> {{ pulser.link(Field4) }}
     <br>
     <strong>Priority:</strong> {{ Field113 }}
 </p>
@@ -36,7 +36,7 @@
     <p><strong>File Attachments:</strong></p>
 
     <ul>
-        {{ pulser.filedownload(Field8, Field8-url) }}
-        {{ pulser.filedownload(Field7, Field7-url) }}
+        {{ pulser.filedownload(Field8) }}
+        {{ pulser.filedownload(Field7) }}
     </ul>
 {% endif %}

@@ -1,11 +1,11 @@
 {% import "helpers.html.twig" as pulser %}
 {% import _self as self %}
 
-{% macro fileUpload(file, url, date) %}
+{% macro fileUpload(file, date) %}
     {% if file is not empty %}
         <li>
             <span>{{ date | parse_date("Ymd") | date("Y-m-d") }}</span>
-            <span><a href="{{ url }}">{{ file }}</a></span>
+            <span>{{ file | wufoo_upload }}</span>
         </li>
     {% endif %}
 {% endmacro %}
@@ -19,10 +19,10 @@
 </p>
 
 <ul>
-    {{ self.fileUpload(Field103, Field103-url, Field131) }}
-    {{ self.fileUpload(Field122, Field122-url, Field132) }}
-    {{ self.fileUpload(Field125, Field125-url, Field133) }}
-    {{ self.fileUpload(Field126, Field126-url, Field134) }}
+    {{ self.fileUpload(Field103, Field131) }}
+    {{ self.fileUpload(Field122, Field132) }}
+    {{ self.fileUpload(Field125, Field133) }}
+    {{ self.fileUpload(Field126, Field134) }}
 </ul>
 
 {% if Field108 is not empty %}

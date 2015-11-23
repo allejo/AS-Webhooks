@@ -18,7 +18,7 @@ class WebController extends BaseController
 
     public function postAgendaRequestAction (Request $request, Application $app)
     {
-        $this->configureUniqueIds($app);
+        $this->configureIncomingRequest($request, $app);
 
         $entryId = $request->get("EntryId");
         $content = $app['twig']->render("agendaupload.html.twig", $request->request->all());
@@ -40,7 +40,7 @@ class WebController extends BaseController
 
     public function postWebRequestAction (Request $request, Application $app)
     {
-        $this->configureUniqueIds($app);
+        $this->configureIncomingRequest($request, $app);
 
         $entryId  = $request->get("EntryId");
         $priority = $request->get("Field113");

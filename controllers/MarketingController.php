@@ -18,7 +18,7 @@ class MarketingController extends BaseController
 
     public function postGeneralMarketingAction (Request $request, Application $app)
     {
-        $this->configureUniqueIds($app);
+        $this->configureIncomingRequest($request, $app);
 
         $entryId     = $request->get("EntryId");
         $eventTitle  = $request->get("Field1383");

@@ -10,15 +10,22 @@ class BaseController
 {
     protected $marketingId;
     protected $webRequestsId;
+    protected $handshake;
     protected $vladId;
     protected $kevinId;
 
-    protected function configureUniqueIds (Application $app)
+    protected function configureIncomingRequest (Request $request, Application $app)
     {
         $this->marketingId   = $app['config']['dapulse']['boards']['marketing'];
         $this->webRequestsId = $app['config']['dapulse']['boards']['web'];
         $this->vladId        = $app['config']['dapulse']['users']['vlad'];
         $this->kevinId       = $app['config']['dapulse']['users']['kevin'];
+        $this->handshake     = $app['config']['wufoo']['handshake'];
+
+        if ($request->get('HandshakeKey') === $this->handshake)
+        {
+            $app->abort(403, "A handshake key is required for POST requests.");
+        }
     }
 
     protected function localHostOnly(Application $app)

@@ -9,3 +9,4 @@ dapulse:
 wufoo:
   subdomain: "subdomain"
   apikey: "wufoo api key"
+  handshake: "handshake for wufoo POST requests"

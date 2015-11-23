@@ -23,6 +23,10 @@ class MainController
                 'function'  => 'agendaUploadsPost',
                 'form'      => 'kzprsz50049u2g'
             ),
+            'discounts'     => array(
+                'function'  => 'matadorDiscountPost',
+                'form'      => 'rgzqffz1to7860'
+            ),
             'genrequest'    => array(
                 'function'  => 'marketingRequestPost',
                 'form'      => 'zvmgvhj0lmd1so'
@@ -140,9 +144,22 @@ class MainController
         $entryId = $fields["EntryId"];
 
         $webProjectsBoard = new PulseBoard($this->webRequestsId);
-        $newPulse = $webProjectsBoard->createPulse("Agenda Upload #" . $entryId, $this->kevinId, "agenda_minutes_uploads");
+        $newPulse = $webProjectsBoard->createPulse("Agenda Upload #" . $entryId, $this->vladId, "agenda_minutes_uploads");
         $newPulse->getPersonColumn("person")->updateValue($this->vladId);
         $newPulse->addNote("Agenda Upload Information", $content);
+
+        return $newPulse->getId();
+    }
+
+    private function matadorDiscountPost ($content, $fields)
+    {
+        $entryId    = $fields["EntryId"];
+        $pulseTitle = sprintf("#%d Matador Discount - %s", $entryId, $fields['Field1']);
+
+        $webProjectsBoard = new PulseBoard($this->webRequestsId);
+        $newPulse = $webProjectsBoard->createPulse($pulseTitle, $this->vladId, "matador_discounts");
+        $newPulse->getPersonColumn("person")->updateValue($this->vladId);
+        $newPulse->addNote("Matador Discount Details", $content);
 
         return $newPulse->getId();
     }

@@ -1,0 +1,25 @@
+{% import "helpers.html.twig" as pulser %}
+
+<p>
+    {{ Field1 }} ({{ pulser.link(Field10) }})
+    <br>
+    {{ Field4 }}
+    <br>
+    {{ Field6 }}, {{ Field7 }}, {{ Field8 }}
+</p>
+
+<hr>
+
+<p>
+    <strong>Code:</strong> {{ Field21 }}
+    <br>
+    <strong>Description:</strong> {{ Field14 }}
+    <br>
+    <strong>Contact</strong>
+    <br>
+    {{ Field2 }} {{ Field3 }}
+    <br>
+    {{ pulser.email(Field12) }}
+    <br>
+    {{ pulser.telephone(Field16) }}
+</p>

@@ -22,7 +22,7 @@ class BaseController
         $this->kevinId       = $app['config']['dapulse']['users']['kevin'];
         $this->handshake     = $app['config']['wufoo']['handshake'];
 
-        if ($request->get('HandshakeKey') === $this->handshake)
+        if ($request->get('HandshakeKey') !== $this->handshake)
         {
             $app->abort(403, "A handshake key is required for POST requests.");
         }

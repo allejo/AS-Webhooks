@@ -87,7 +87,19 @@ class MainController
             $app->abort(403, "A handshake key is required for POST requests.");
         }
 
-        $fields   = $request->request->all();
+        $fields = $request->request->all();
+
+        // Because of Wufoo's horrendous API, POST data and API data do not match the same structure; this loop will go
+        // through all of the fields that have a "*-url" counterpart and convert it into the same format as the API
+        // gives us so our Twig files have no issue handling them.
+        foreach ($fields as $key => $value)
+        {
+            if (array_key_exists("$key-url", $fields))
+            {
+                $fields[$key] = sprintf("%s (%s)", $value, $fields["$key-url"]);
+            }
+        }
+
         $content  = $app['twig']->render($hook . ".html.twig", $fields);
         $function = $this->registeredHooks[$hook]['function'];
         $pulse_id = $this->$function($content, $fields);

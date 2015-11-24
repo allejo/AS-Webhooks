@@ -1,0 +1,85 @@
+{% import "helpers.html.twig" as pulser %}
+{% import _self as self %}
+
+<p>
+    <strong>Organization:</strong> {{ Field6 }}
+</p>
+
+<p>
+    <strong>Target Location</strong>
+</p>
+
+<ul>
+    {{ pulser.conditionalListItem(Field433) }}
+    {{ pulser.conditionalListItem(Field434) }}
+    {{ pulser.conditionalListItem(Field435) }}
+</ul>
+
+<p>
+    <strong>Contact</strong>
+    <br>
+    {{ Field4 }} {{ Field5 }}
+    <br>
+    {{ pulser.email(Field212) }}
+    <br>
+    {{ pulser.telephone(Field428) }}
+</p>
+
+{% if Field433 is not empty %}
+    <p>
+        <strong>Poster Details</strong>
+        <br>
+        End Date: {{ Field534 | parse_date(["Ymd", "Y-m-d"]) | date("M d, Y") }}
+    </p>
+
+    <ul>
+        {{ pulser.filedownload(Field424) }}
+    </ul>
+{% endif %}
+
+{% if Field434 is not empty %}
+    <p>
+        <strong>Calendar Event Details</strong>
+        <br>
+        Title: {{ Field317 }} <br>
+        Location: {{ Field318 }} <br>
+        Start: {{ Field7 | parse_date(["Ymd", "Y-m-d"]) | date("M d, Y") }} @ {{ Field320 | date("g:ia") }}
+
+        {% if Field316 is not empty %}
+            <br>
+            End: {{ Field316 | parse_date(["Ymd", "Y-m-d"]) | date("M d, Y") }}
+
+            {% if Field321 is not empty %}
+                @ {{ Field321 | date("g:ia") }}
+            {% endif %}
+        {% endif %}
+
+        {% if Field535 is not empty %}
+            <br>
+            Posting Ending Date: {{ Field535 | parse_date(["Ymd", "Y-m-d"]) | date("M d, Y") }}
+        {% endif %}
+    </p>
+{% endif %}
+
+{% if Field435 %}
+    <p>
+        <strong>Video Details</strong>
+        <br>
+        Title: {{ Field844 }}
+        Posting End Date: {{ Field536 | parse_date(["Ymd", "Y-m-d"]) | date("M d, Y") }}
+    </p>
+
+    <ul>
+        {{ pulser.filedownload(Field431) }}
+    </ul>
+{% endif %}
+
+{% if Field846 is not empty %}
+    <hr>
+
+    <p>
+        <strong>Notes</strong>
+    </p>
+
+    {{ Field846 | nl2br }}
+{% endif %}

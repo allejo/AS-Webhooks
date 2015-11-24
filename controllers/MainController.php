@@ -2,6 +2,7 @@
 
 namespace allejo\DaPulser\Controller;
 
+use allejo\DaPulse\Pulse;
 use allejo\DaPulse\PulseBoard;
 use allejo\DaPulse\Utilities\UrlQuery;
 use Silex\Application;
@@ -12,8 +13,10 @@ class MainController
     protected $registeredHooks;
     protected $webRequestsId;
     protected $marketingId;
+    protected $mindBoardId;
     protected $handshake;
     protected $kevinId;
+    protected $joseId;
     protected $vladId;
 
     public function __construct()
@@ -30,6 +33,10 @@ class MainController
             'genrequest'    => array(
                 'function'  => 'marketingRequestPost',
                 'form'      => 'zvmgvhj0lmd1so'
+            ),
+            'mindrequest'   => array(
+                'function'  => 'mindRequestPost',
+                'form'      => 's1ncm0q514cg77e'
             ),
             'webrequest'    => array(
                 'function'  => 'webRequestPost',
@@ -130,6 +137,8 @@ class MainController
     {
         $this->marketingId   = $app['config']['dapulse']['boards']['marketing'];
         $this->webRequestsId = $app['config']['dapulse']['boards']['web'];
+        $this->mindBoardId   = $app['config']['dapulse']['boards']['mind'];
+        $this->joseId        = $app['config']['dapulse']['users']['jose'];
         $this->vladId        = $app['config']['dapulse']['users']['vlad'];
         $this->kevinId       = $app['config']['dapulse']['users']['kevin'];
         $this->handshake     = $app['config']['wufoo']['handshake'];
@@ -174,6 +183,17 @@ class MainController
         $generalMarketingBoard = new PulseBoard($this->marketingId);
         $newPulse = $generalMarketingBoard->createPulse($pulseTitle, $this->kevinId);
         $newPulse->addNote("Request Notes", $content);
+
+        return $newPulse->getId();
+    }
+
+    private function mindRequestPost ($content, $fields)
+    {
+        $pulseTitle = sprintf("#%d %s - %s %s", $fields['EntryId'], $fields['Field6'], $fields['Field4'], $fields['Field5']);
+
+        $mindRequestBoard = new PulseBoard($this->mindBoardId);
+        $newPulse = $mindRequestBoard->createPulse($pulseTitle, $this->joseId);
+        $newPulse->addNote("MIND Request Notes", $content);
 
         return $newPulse->getId();
     }

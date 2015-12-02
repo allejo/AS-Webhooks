@@ -96,7 +96,12 @@ class MainController
         {
             if (array_key_exists("$key-url", $fields))
             {
-                $fields[$key] = sprintf("%s (%s)", $value, $fields["$key-url"]);
+                $fieldUrl = $fields["$key-url"];
+
+                if (!empty($fieldUrl))
+                {
+                    $fields[$key] = sprintf("%s (%s)", $value, $fieldUrl);
+                }
             }
         }
 

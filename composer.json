@@ -1,6 +1,6 @@
 {
   "require": {
-    "allejo/php-pulse": "dev-master",
+    "allejo/php-pulse": "~0.1@alpha",
     "deralex/yaml-config-service-provider": "^1.0",
     "twig/twig": "~1.0",
     "silex/silex": "~1.3",

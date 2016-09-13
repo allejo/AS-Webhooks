@@ -13,6 +13,16 @@ class DateParserFilter extends \Twig_Extension
 
     public function parseDate ($string, $formats)
     {
+        return self::guessDate($string, $formats);
+    }
+
+    public function getName ()
+    {
+        return "parse_date";
+    }
+
+    public static function guessDate ($string, $formats)
+    {
         if (is_string($formats))
         {
             $formats = array($formats);
@@ -29,10 +39,5 @@ class DateParserFilter extends \Twig_Extension
         }
 
         return $string;
-    }
-
-    public function getName ()
-    {
-        return "parse_date";
     }
 }

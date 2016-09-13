@@ -1,0 +1,86 @@
+{% import "helpers.html.twig" as pulser %}
+{% import _self as self %}
+
+{% macro print_req(field) %}
+    {% if field is not empty %}
+        <li>{{ field }}</li>
+    {% endif %}
+{% endmacro %}
+
+<p>
+    <strong>Club:</strong> {{ Field5 }}
+    <br>
+    <strong>Type of Request:</strong> {{ Field10 }}
+</p>
+
+<p><strong>Contact Info</strong></p>
+<p>
+    <strong>Main Contact:</strong> {{ Field1 }} {{ Field2 }} {{ pulser.email(Field3) }}
+    {% if Field148 is not empty %}
+        <br>
+        <strong>Club Contact:</strong> {{ Field148 }} {{ Field149 }} {{ pulser.email(Field150) }}
+    {% endif %}
+</p>
+
+<hr>
+
+<p><strong>Event Info</strong></p>
+<p>
+    <strong>Name:</strong> {{ Field7 }}
+    <br>
+    <strong>Date & Time:</strong>
+        {{ Field116 | parse_date(['Ymd', 'Y-m-d']) | date('Y-m-d') }}
+        {{ Field117 }}
+    <br>
+    <strong>Location:</strong> {{ Field119 }}
+    <br>
+    <strong>Cost:</strong> {{ Field138 | default('None') }}
+    <br>
+    <strong>Ticket Seller:</strong> {{ Field139 | default('None') }}
+    <br>
+    <br>
+    {{ Field143 }}
+</p>
+
+<hr>
+
+<p><strong>Print Requirements</strong></p>
+<ul>
+    {{ self.print_req(Field154) }}
+    {{ self.print_req(Field155) }}
+    {{ self.print_req(Field159) }}
+    {{ self.print_req(Field156) }}
+    {{ self.print_req(Field157) }}
+    {{ self.print_req(Field158) }}
+    {{ self.print_req(Field160) }}
+</ul>
+<p>
+    <strong>Quantities</strong>
+    <br>
+    {{ Field1482 }}
+</p>
+<p>
+    <strong>Other Print Requirements</strong>
+    <br>
+    {{ Field135 }}
+</p>
+
+<p><strong>Digital Requests</strong></p>
+<ul>
+    {{ self.print_req(Field1381) }}
+    {{ self.print_req(Field1382) }}
+    {{ self.print_req(Field1383) }}
+</ul>
+
+<hr>
+
+<p><strong>Additional Notes</strong></p>
+<p>{{ Field1168 }}</p>
+
+<hr>
+
+<p><strong>File Uploads</strong></p>
+<ul>
+    <li>{{ Field1275 | wufoo_upload }}</li>
+    <li>{{ Field136 | wufoo_upload }}</li>
+</ul>

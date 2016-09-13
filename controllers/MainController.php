@@ -5,6 +5,7 @@ namespace allejo\DaPulser\Controller;
 use allejo\DaPulse\Pulse;
 use allejo\DaPulse\PulseBoard;
 use allejo\DaPulse\Utilities\UrlQuery;
+use allejo\DaPulser\Twig\DateParserFilter;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,6 +13,7 @@ class MainController
 {
     protected $registeredHooks;
     protected $webRequestsId;
+    protected $sportBoardId;
     protected $marketingId;
     protected $mindBoardId;
     protected $handshake;
@@ -37,6 +39,10 @@ class MainController
             'mindrequest'   => array(
                 'function'  => 'mindRequestPost',
                 'form'      => 's1ncm0q514cg77e'
+            ),
+            'sportrequest'  => array(
+                'function'  => 'sportRequestPost',
+                'form'      => 'm1dfel500zqgnzz'
             ),
             'webrequest'    => array(
                 'function'  => 'webRequestPost',
@@ -155,6 +161,7 @@ class MainController
         $this->marketingId   = $app['config']['dapulse']['boards']['marketing'];
         $this->webRequestsId = $app['config']['dapulse']['boards']['web'];
         $this->mindBoardId   = $app['config']['dapulse']['boards']['mind'];
+        $this->sportBoardId  = $app['config']['dapulse']['boards']['sports'];
         $this->joseId        = $app['config']['dapulse']['users']['jose'];
         $this->vladId        = $app['config']['dapulse']['users']['vlad'];
         $this->kevinId       = $app['config']['dapulse']['users']['kevin'];
@@ -211,6 +218,20 @@ class MainController
         $mindRequestBoard = new PulseBoard($this->mindBoardId);
         $newPulse = $mindRequestBoard->createPulse($pulseTitle, $this->joseId);
         $newPulse->addNote("MIND Request Notes", $content);
+
+        return $newPulse->getId();
+    }
+
+    private function sportRequestPost ($content, $fields)
+    {
+        $entryId   = $fields["EntryId"];
+        $pulseTile = sprintf("#%d %s %s", $entryId, $fields['Field5'], $fields['Field10']);
+        $eventDate = DateParserFilter::guessDate($fields['Field116'], array('Ymd', 'Y-m-d'));
+
+        $sportRequestBoard = new PulseBoard($this->sportBoardId);
+        $newPulse = $sportRequestBoard->createPulse($pulseTile, $this->kevinId);
+        $newPulse->getDateColumn('due_date')->updateValue($eventDate);
+        $newPulse->addNote('Sport Club Request', $content);
 
         return $newPulse->getId();
     }
